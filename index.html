@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Css/style.css">
+    <title>Temperature Converter</title>
+</head>
+<body>
+    <div class="temp-container">
+        <h1><i>Temperature Converter</i></h1>
+        <div class="container-feild-group">
+            <div id="tempInput" class="container-feild">             
+                <div class="input-group">
+                    <div class="input-label">
+                        <label for="tempFrom">From:</label>
+                        <select name="temp-from" class="select-group" id="tempFrom">
+                            <option value="Celcius">Celcius</option>
+                            <option value="Kelvin">Kelvin</option>
+                            <option value="Fahrenheit">Fahrenheit</option>
+                            <option value="Rankine">Rankine</option>
+                          </select>
+                    </div>               
+                    <input type="number" name="from-temperature" min="0" class="input-feild">
+                </div>
+                
+                <div class="input-group">
+                    <div class="input-label">
+                        <label for="toFrom">To:</label>
+                        <select name="to-from" class="select-group" id="toFrom">
+                            <option value="Celcius">Celcius</option>
+                            <option value="Kelvin">Kelvin</option>
+                            <option value="Fahrenheit">Fahrenheit</option>
+                            <option value="Rankine">Rankine</option>
+                          </select>
+                    </div>               
+                    <input type="number" name="to-temperature" min="0" class="input-feild">
+                </div>
+
+                <div class="input-group">
+                    <button class="btn btn-reset">Reset</button>
+                    <button class="btn btn-calculate">Calculate</button>
+                </div>        
+            </div>
+            
+            <div id="tempOutput" class="container-feild">
+
+            </div>
+        </div>        
+    </div>    
+</body>
+</html>
