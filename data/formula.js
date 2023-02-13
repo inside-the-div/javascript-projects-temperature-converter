@@ -1,4 +1,4 @@
-{
+var formula = `{
     "conversions": [
         {
             "from": "Celsius",
@@ -14,6 +14,7 @@
             "from": "Celsius",
             "to": "Rankine",
             "formula": "R = (9/5)C + 491.67"
+            
         },
         {
             "from": "Kelvin",
@@ -61,4 +62,4 @@
             "formula": "F = R - 459.67"
         }
     ]
-}
+}`;
