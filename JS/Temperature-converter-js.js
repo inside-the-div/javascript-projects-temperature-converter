@@ -1,30 +1,19 @@
+_cmnHideElement("OutputResult");
 const objFormula = JSON.parse(formula);
 document.getElementById("selectBoxToTemp").value = "Kelvin";
-document.getElementById("OutputResult").style = "display: none";
-document.getElementById("OutputInfo").style = "display: flex";
 
 function TemperatureCalculatorFormValidate()
 {
     RemoveAllErrorMessage();
+    
     var fromLength = document.getElementById("fromTemp").value;
 
-    if(IsInputFieldEmpty("fromTemp"))
-    {
-        ShowErrorMessageBottomOfTheInputFiled("fromTemp", "Enter temperature.");
-        return false;
-    }
-    else if(isNaN(fromLength))
+    if(IsInputFieldEmpty("fromTemp") || (isNaN(fromLength) && Number(fromLength) <= 0))
     {
         ShowErrorMessageBottomOfTheInputFiled("fromTemp", "Enter valid temperature.");
         return false;
     }
-    
-    if(parseFloat(fromLength) < 1)
-    {
-        ShowErrorMessageBottomOfTheInputFiled("fromLength", "Enter valid temperature.");
-        return false;
-    }
-    
+
     return true;
 }
 
@@ -34,39 +23,32 @@ function TemperatureCalculatorReset()
     document.getElementById("selectBoxToTemp").value = "Kelvin";
     document.getElementById("selectBoxFromTemp").value = "Celsius";
     document.getElementById("outputTemp").value = "";
-    document.getElementById("tempFormula").innerHTML = "";
-    document.getElementById("tempResult").innerHTML = "00.00";
+    
     RemoveAllErrorMessage();
+
+    _cmnHideElement("OutputResult");
+    _cmnShowElement("OutputInfo", "flex");
 }
 
 function TemperatureCalculation()
 {
     if(TemperatureCalculatorFormValidate())
     {
-        var count = 0;
         var fromUnit = document.getElementById("selectBoxFromTemp").value;
         var toUnit = document.getElementById("selectBoxToTemp").value;
         var inputTemperature = document.getElementById("fromTemp").value;
         var outputTemp = document.getElementById("outputTemp");
-        document.getElementById("tempFormula").innerHTML = "";
-
-        for(var i = 0; i < (objFormula.conversions.length) - 1; i++)
-        {            
-            if(objFormula.conversions[i].from.toLowerCase() == fromUnit.toLowerCase() && objFormula.conversions[i].to.toLowerCase() == toUnit.toLowerCase())
-            {
-                document.getElementById("tempFormula").innerHTML = objFormula.conversions[i].formula;
-            }  
-        }
-        if(count == 0)
-        {
-            document.getElementById("OutputInfo").style = "display: none";
-            document.getElementById("OutputResult").style = "display: flex";
-            count++;
-        }
-
+        
+        ShowFormula(fromUnit, toUnit);
+        
         var result = TempCconverter(inputTemperature,  fromUnit,  toUnit);
-        outputTemp.value = Number(result).toFixed(2);
+        
+        outputTemp.value = result.toFixed(2);
         document.getElementById("tempResult").innerHTML = result.toFixed(2);
+
+        //result div show
+        _cmnHideElement("OutputInfo");
+        _cmnShowElement("OutputResult", "flex");
     }
 }
 
@@ -134,6 +116,23 @@ function TempCconverter(inputTemperature,  from_unit,  to_unit)
         {
             inputTemperature = inputTemperature - 459.67;
         }
-    }            
+    }  
+
     return inputTemperature;
+}
+
+function ShowFormula(fromUnit,toUnit)
+{
+    document.getElementById("tempFormula").innerHTML = "";
+
+    for(var i = 0; i < (objFormula.conversions.length) - 1; i++)
+    {            
+        if(
+            objFormula.conversions[i].from.toLowerCase() == fromUnit.toLowerCase() 
+            && objFormula.conversions[i].to.toLowerCase() == toUnit.toLowerCase()
+            )
+        {
+            document.getElementById("tempFormula").innerHTML = objFormula.conversions[i].formula;
+        }
+    }
 }
