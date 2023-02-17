@@ -19,17 +19,19 @@ function TemperatureCalculatorFormValidate()
     return true;
 }
 
-function TemperatureCalculatorReset()
+function ResetTemperatureCalculator()
 {
-    document.getElementById("fromTemp").value = "";
-    document.getElementById("selectBoxToTemp").value = "Kelvin";
-    document.getElementById("selectBoxFromTemp").value = "Celsius";
-    document.getElementById("outputTemp").value = "";
-    
-    RemoveAllErrorMessage();
+    if(confirm("Are you sure want to reset the converter?")){
+        document.getElementById("fromTemp").value = "";
+        document.getElementById("selectBoxToTemp").value = "Kelvin";
+        document.getElementById("selectBoxFromTemp").value = "Celsius";
+        document.getElementById("outputTemp").value = "";
+        
+        RemoveAllErrorMessage();
 
-    _cmnHideElement("OutputResult");
-    _cmnShowElement("OutputInfo", "flex");
+        _cmnHideElement("OutputResult");
+        _cmnShowElement("OutputInfo", "flex");
+    }
 }
 
 function TemperatureCalculation()
@@ -46,7 +48,7 @@ function TemperatureCalculation()
         var result = ConverterTemperature(inputTemperature,  fromUnit,  toUnit);
         
         outputTemperature.value = result.toFixed(2);
-        document.getElementById("tempResult").innerHTML = result.toFixed(2); 
+        document.getElementById("tempResult").innerHTML = formatResult(inputTemperature,result,fromUnit,toUnit);
 
         //result div show
         _cmnHideElement("OutputInfo");
@@ -138,4 +140,29 @@ function ShowFormula(fromUnit,toUnit)
             document.getElementById("tempFormula").innerHTML = objFormula.conversions[i].formula;
         }
     }
+}
+
+function formatResult(fromTemperature,toTemperature,fromUnit,toUnit){
+
+    if(fromUnit.toLowerCase() == 'celsius'){
+        fromUnit = '℃';
+    }else if(fromUnit.toLowerCase() == 'kelvin'){
+        fromUnit = 'K'
+    }else if(fromUnit.toLowerCase() == 'fahrenheit'){
+        fromUnit = '℉'
+    }else if(fromUnit.toLowerCase() == 'rankine'){
+        fromUnit = '°R'
+    }
+
+    if(toUnit.toLowerCase() == 'celsius'){
+        toUnit = '℃';
+    }else if(toUnit.toLowerCase() == 'kelvin'){
+        toUnit = 'K'
+    }else if(toUnit.toLowerCase() == 'fahrenheit'){
+        toUnit = '℉'
+    }else if(toUnit.toLowerCase() == 'rankine'){
+        toUnit = '°R'
+    }
+
+    return fromTemperature + fromUnit + ' = ' + toTemperature + toUnit;
 }
