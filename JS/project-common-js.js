@@ -27,51 +27,20 @@ function ShowErrorMessageBottomOfTheInputFiled(fieldID,errorMessage)
     inputField.parentNode.insertBefore(errorMessageElement, inputField.nextSibling); // set the error message uder the error feild
 }
 
-function IsInputFieldEmpty(feildId)
-{
-    var inputField = document.getElementById(feildId);
-    if(inputField.value == "") // check the feild empty or not
-    {
-        return true;
-    }
-
-    return false;
-}
-// check the year leap year or not
-function LeapYear(BirthYear)
-{
-    if (BirthYear % 4 == 0)
-    {
-        if (BirthYear % 100 != 0)
-        {
-            return true;
-        }
-        else
-        {
-            if (BirthYear % 400 == 0)
-            {
-                return true;
-            }
-        }
-    }
-
-    return false;    
-}
-
 function _cmnHideElement(elementId)
 {
-    var selectedDisplayValue = document.getElementById(elementId).style.display;
-    if(selectedDisplayValue != 'none')
+    var displayProperty = document.getElementById(elementId).style.display;
+    if(displayProperty != 'none')
     {
         document.getElementById(elementId).style.display = "none";
     }
 }
 
-function _cmnShowElement(elementId, displayName)
+function _cmnShowElement(elementId, givenDisplayProperty)
 {
-    var selectedDisplayValue = document.getElementById(elementId).style.display;
-    if(selectedDisplayValue != displayName)
+    var displayProperty = document.getElementById(elementId).style.display;
+    if(displayProperty != givenDisplayProperty)
     {
-        document.getElementById(elementId).style.display = displayName;
+        document.getElementById(elementId).style.display = givenDisplayProperty;
     }
 }

@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name = "viewport" content="width=device-width, initial-scale=1.0">
-    <meta name = "keywords" content = "">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="keywords" content="">
     <meta name="description" content="">
-    <link rel = "stylesheet" href="css/project-common-css.css">
+    <link rel="stylesheet" href="css/project-common-css.css">
+
     <title>Temperature Converter</title>
 </head>
 <body>
     <div class="container">
         <h1>Temperature Converter</h1>
         <div class="container-feild-group">
-            
             <div id="tempInput" class="container-feild">             
                 <div class="input-group">
-                    
                     <div class="input-label">
                         <label for="selectBoxFromTemp">From:</label>                        
                     </div>
@@ -26,7 +26,7 @@
                         <option value="Fahrenheit">Fahrenheit</option>
                         <option value="Rankine">Rankine</option>
                     </select>             
-                    <input id="fromTemp" placeholder="Temperature" type="number" name="from-temperature" min="0" class="input-feild">
+                    <input id="fromTemp" placeholder="Temperature" type="text" name="from-temperature" min="0" class="input-feild">
                 </div>
                 
                 <div class="input-group">
@@ -46,15 +46,13 @@
                     <button onclick="TemperatureCalculatorReset()" id="btnReset" class="btn btn-reset">Reset</button>
                     <button onclick="TemperatureCalculation()" id="btnCalculate" class="btn btn-calculate">Calculate</button>
                 </div> 
-
             </div>
             
             <div id="tempOutput" class="container-feild">
-               
                 <div id="OutputInfo" class="output-information output-box">
                     <ul>
                         <li>The <b>From</b> feild indicate that your given temperature. Also you need to select unit from the dropdown.</li>
-                        <li>The <b>To</b> feild indicate that your converted temperature. Also you need to select unit from the dropdown.</li>                        
+                        <li>The <b>To</b> feild indicate that your converted temperature. Also you need to select unit from the dropdown.</li>      
                     </ul>
                 </div>
                 
@@ -70,16 +68,14 @@
                     <p>Formula: </p>
                     <p><span id="tempFormula"></span></p>
                 </div>
-                
             </div>
         </div> 
         
         <div class="author-intro">
             <p>Develop By <i><a href="https://www.linkedin.com/in/kamrul-hasan100" target="_blank">Kamrul Hasan</a></i> & Powered By <i><a href="https://www.insidethediv.com/" target="_blank">InsideTheDiv</a></i></p>
         </div>    
-
     </div>
-<!-- javascript file link -->
+    <!-- javascript -->
     <script src="data/formula.js"></script>
     <script src="js/project-common-js.js"></script>
     <script src="js/temperature-converter-js.js"></script>

@@ -1,14 +1,16 @@
-_cmnHideElement("OutputResult");
 const objFormula = JSON.parse(formula);
+
+_cmnHideElement("OutputResult");
+
+// set default value to select box
 document.getElementById("selectBoxToTemp").value = "Kelvin";
 
 function TemperatureCalculatorFormValidate()
 {
     RemoveAllErrorMessage();
     
-    var fromLength = document.getElementById("fromTemp").value;
-
-    if(IsInputFieldEmpty("fromTemp") || (isNaN(fromLength) && Number(fromLength) <= 0))
+    var fromTemperature = document.getElementById("fromTemp").value;
+    if(fromTemperature == "" || isNaN(fromTemperature) || (!isNaN(fromTemperature) && Number(fromTemperature) <= 0))
     {
         ShowErrorMessageBottomOfTheInputFiled("fromTemp", "Enter valid temperature.");
         return false;
@@ -37,14 +39,14 @@ function TemperatureCalculation()
         var fromUnit = document.getElementById("selectBoxFromTemp").value;
         var toUnit = document.getElementById("selectBoxToTemp").value;
         var inputTemperature = document.getElementById("fromTemp").value;
-        var outputTemp = document.getElementById("outputTemp");
+        var outputTemperature = document.getElementById("outputTemp");
         
         ShowFormula(fromUnit, toUnit);
         
-        var result = TempCconverter(inputTemperature,  fromUnit,  toUnit);
+        var result = ConverterTemperature(inputTemperature,  fromUnit,  toUnit);
         
-        outputTemp.value = result.toFixed(2);
-        document.getElementById("tempResult").innerHTML = result.toFixed(2);
+        outputTemperature.value = result.toFixed(2);
+        document.getElementById("tempResult").innerHTML = result.toFixed(2); 
 
         //result div show
         _cmnHideElement("OutputInfo");
@@ -52,78 +54,79 @@ function TemperatureCalculation()
     }
 }
 
-function TempCconverter(inputTemperature,  from_unit,  to_unit)
+function ConverterTemperature(inputTemperature,  fromUnit,  toUnit)
 {
-    from_unit = from_unit.toLowerCase();
-    to_unit = to_unit.toLowerCase();
+    fromUnit = fromUnit.toLowerCase();
+    toUnit = toUnit.toLowerCase();
     inputTemperature = Number(inputTemperature);
-    if (from_unit == "celsius")
+    var outputTemperature;
+
+    if (fromUnit == "celsius")
     {
-        if (to_unit == "kelvin")
+        if (toUnit == "kelvin")
         {
-            inputTemperature = (inputTemperature + 273.15);
+            outputTemperature = (inputTemperature + 273.15);
         }
-        else if (to_unit == "fahrenheit")
+        else if (toUnit == "fahrenheit")
         {
-            inputTemperature = (inputTemperature * (9 / 5) + 32);
+            outputTemperature = (inputTemperature * (9 / 5) + 32);
         }
-        else if (to_unit == "rankine")
+        else if (toUnit == "rankine")
         {
-            inputTemperature = (inputTemperature * 9/5) + 491.67;
+            outputTemperature = (inputTemperature * 9/5) + 491.67;
         }
     }
-    else if (from_unit == "kelvin")
+    else if (fromUnit == "kelvin")
     {
-        if (to_unit == "celsius")
+        if (toUnit == "celsius")
         {
-            inputTemperature = inputTemperature - 273.15;
+            outputTemperature = inputTemperature - 273.15;
         }
-        else if (to_unit == "fahrenheit")
+        else if (toUnit == "fahrenheit")
         {
-            inputTemperature = (inputTemperature - 273.15) * 9/5 - 459.67;
+            outputTemperature = (inputTemperature - 273.15) * 9/5 - 459.67;
         }
-        else if (to_unit == "rankine")
+        else if (toUnit == "rankine")
         {
-            inputTemperature = inputTemperature * 9/5 + 491.67;
+            outputTemperature = inputTemperature * 9/5 + 491.67;
         }
     }
-    else if (from_unit == "fahrenheit")
+    else if (fromUnit == "fahrenheit")
     {
-        if (to_unit == "celsius")
+        if (toUnit == "celsius")
         {
-            inputTemperature = (inputTemperature - 32) * 5/9;
+            outputTemperature = (inputTemperature - 32) * 5/9;
         }
-        else if (to_unit == "kelvin")
+        else if (toUnit == "kelvin")
         {
-            inputTemperature = (inputTemperature + 459.67) * 5/9;
+            outputTemperature = (inputTemperature + 459.67) * 5/9;
         }
-        else if (to_unit == "rankine")
+        else if (toUnit == "rankine")
         {
-            inputTemperature = inputTemperature + 459.67;
+            outputTemperature = inputTemperature + 459.67;
         }
     }
-    else if (from_unit == "rankine")
+    else if (fromUnit == "rankine")
     {
-        if (to_unit == "celsius")
+        if (toUnit == "celsius")
         {
-            inputTemperature = (inputTemperature - 491.67) * 5/9;
+            outputTemperature = (inputTemperature - 491.67) * 5/9;
         }
-        else if (to_unit == "kelvin")
+        else if (toUnit == "kelvin")
         {
-            inputTemperature = inputTemperature * 5/9;
+            outputTemperature = inputTemperature * 5/9;
         }
-        else if (to_unit == "fahrenheit")
+        else if (toUnit == "fahrenheit")
         {
-            inputTemperature = inputTemperature - 459.67;
+            outputTemperature = inputTemperature - 459.67;
         }
     }  
 
-    return inputTemperature;
+    return outputTemperature;
 }
 
 function ShowFormula(fromUnit,toUnit)
 {
-    document.getElementById("tempFormula").innerHTML = "";
 
     for(var i = 0; i < (objFormula.conversions.length) - 1; i++)
     {            
