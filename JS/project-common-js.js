@@ -1,4 +1,4 @@
-function RemoveAllErrorMessage()
+function _cmnRemoveAllErrorMessage()
 {
     var allErrorBorder = document.getElementsByClassName('error-border');
 	var allErrorMessage = document.getElementsByClassName('error-message');
@@ -15,7 +15,7 @@ function RemoveAllErrorMessage()
     }	  
 }
 
-function ShowErrorMessageBottomOfTheInputFiled(fieldID,errorMessage)
+function _cmnShowErrorMessageBottomOfTheInputFiled(fieldID,errorMessage)
 {
     var inputField = document.getElementById(fieldID);   
     inputField.classList.add("error-border"); // add border

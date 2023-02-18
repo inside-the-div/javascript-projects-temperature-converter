@@ -17,6 +17,12 @@ var formula = `{
             
         },
         {
+            "from": "Celsius",
+            "to": "Celsius",
+            "formula": "C = C"
+            
+        },
+        {
             "from": "Kelvin",
             "to": "Celsius",
             "formula": "C = K - 273.15"
@@ -30,6 +36,11 @@ var formula = `{
             "from": "Kelvin",
             "to": "Rankine",
             "formula": "R = K * 1.8"
+        }, 
+        {
+            "from": "Kelvin",
+            "to": "Kelvin",
+            "formula": "K = K"
         },
         {
             "from": "Fahrenheit",
@@ -47,6 +58,11 @@ var formula = `{
             "formula": "R = F + 459.67"
         },
         {
+            "from": "Fahrenheit",
+            "to": "Fahrenheit",
+            "formula": "F = F"
+        },
+        {
             "from": "Rankine",
             "to": "Celsius",
             "formula": "C = (R - 491.67) * 5/9"
@@ -60,6 +76,11 @@ var formula = `{
             "from": "Rankine",
             "to": "Fahrenheit",
             "formula": "F = R - 459.67"
+        },
+        {
+            "from": "Rankine",
+            "to": "Rankine",
+            "formula": "R = R"
         }
     ]
 }`;
