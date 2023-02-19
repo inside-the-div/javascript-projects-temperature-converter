@@ -12,44 +12,44 @@
     <title>Temperature Converter</title>
 </head>
 <body>
-    <div class="container">
+    <div class="tool-container">
         <h1>Temperature Converter</h1>
-        <div class="container-feild-group">
-            <div id="temperatureInput" class="container-feild">             
-                <div class="input-group">
-                    <div class="input-label">
+        <div class="tool-container-feild-group">
+            <div id="temperatureInput" class="tool-container-feild">             
+                <div class="tool-input-group">
+                    <div class="tool-input-label">
                         <label for="fromUnit">From:</label>                        
                     </div>
-                    <select name="temperature-from" class="select-group" id="fromUnit">
+                    <select name="temperature-from" class="tool-select-group" id="fromUnit">
                         <option value="Celsius">Celsius</option>
                         <option value="Kelvin">Kelvin</option>
                         <option value="Fahrenheit">Fahrenheit</option>
                         <option value="Rankine">Rankine</option>
                     </select>             
-                    <input id="inputTemperature" placeholder="Input" type="text" name="from-temperature" min="0" class="input-feild">
+                    <input id="inputTemperature" placeholder="Input" type="text" name="from-temperature" min="0" class="tool-input-feild">
                 </div>
                 
-                <div class="input-group">
-                    <div class="input-label">
+                <div class="tool-input-group">
+                    <div class="tool-input-label">
                         <label for="toUnit">To:</label>                        
                     </div>
-                    <select name="to-from" class="select-group" id="toUnit">
+                    <select name="to-from" class="tool-select-group" id="toUnit">
                         <option value="Celsius">Celsius</option>
                         <option selected value="Kelvin">Kelvin</option>
                         <option value="Fahrenheit">Fahrenheit</option>
                         <option value="Rankine">Rankine</option>
                     </select>
-                    <input readonly id="outputTemperature" placeholder="Output" type="number" name="to-temperature" min="0" class="input-feild readonly-background">
+                    <input readonly id="outputTemperature" placeholder="Output" type="number" name="to-temperature" min="0" class="tool-input-feild readonly-background">
                 </div>
 
-                <div class="input-group">
-                    <button onclick="ResetTemperatureCalculator()" id="btnReset" class="btn btn-reset">Reset</button>
-                    <button onclick="CalculateTemperature()" id="btnCalculate" class="btn btn-calculate">Calculate</button>
+                <div class="tool-input-group">
+                    <button onclick="ResetTemperatureCalculator()" class="tool-btn tool-btn-reset">Reset</button>
+                    <button onclick="CalculateTemperature()" class="tool-btn tool-btn-calculate">Calculate</button>
                 </div> 
             </div>
             
-            <div id="temperatureOutput" class="container-feild">
-                <div id="OutputInfo" class="output-information output-box">
+            <div class="tool-container-feild">
+                <div id="OutputInfo" class="tool-output-information tool-output-box">
                     <h2>Basic Information</h2>
                     <ul>
                         <li>Enter the temperature value in the <b><i>From Input</i></b> field you want to convert.</li>
@@ -59,7 +59,7 @@
                     </ul>
                 </div>
                 
-                <div id="OutputResult" class="output-results output-box">
+                <div id="OutputResult" class="tool-output-results tool-output-box">
                     <h2>Result</h2>
                     
                     <p id="temperatureResult"></p>
@@ -70,7 +70,7 @@
             </div>
         </div> 
         
-       <!--  <div class="author-intro">
+       <!--  <div class="tool-author-intro">
             <p>Develop By <i><a href="https://www.linkedin.com/in/kamrul-hasan100" target="_blank">Kamrul Hasan</a></i> & Powered By <i><a href="https://www.insidethediv.com/" target="_blank">InsideTheDiv</a></i></p>
         </div>   -->  
     </div>
