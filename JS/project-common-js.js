@@ -15,7 +15,7 @@ function _cmnRemoveAllErrorMessage()
     }	  
 }
 
-function _cmnShowErrorMessageBottomOfTheInputFiled(fieldID,errorMessage)
+function _cmnShowErrorMessageBottomOfTheInputField(fieldID,errorMessage)
 {
     var inputField = document.getElementById(fieldID);   
     inputField.classList.add("error-border"); // add border

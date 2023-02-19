@@ -18,24 +18,24 @@
             <div id="temperatureInput" class="container-feild">             
                 <div class="input-group">
                     <div class="input-label">
-                        <label for="selectBoxFromTemperature">From:</label>                        
+                        <label for="fromUnit">From:</label>                        
                     </div>
-                    <select name="temperature-from" class="select-group" id="selectBoxFromTemperature">
+                    <select name="temperature-from" class="select-group" id="fromUnit">
                         <option value="Celsius">Celsius</option>
                         <option value="Kelvin">Kelvin</option>
                         <option value="Fahrenheit">Fahrenheit</option>
                         <option value="Rankine">Rankine</option>
                     </select>             
-                    <input id="fromTemperature" placeholder="Input" type="text" name="from-temperature" min="0" class="input-feild">
+                    <input id="inputTemperature" placeholder="Input" type="text" name="from-temperature" min="0" class="input-feild">
                 </div>
                 
                 <div class="input-group">
                     <div class="input-label">
-                        <label for="selectBoxToTemperature">To:</label>                        
+                        <label for="toUnit">To:</label>                        
                     </div>
-                    <select name="to-from" class="select-group" id="selectBoxToTemperature">
+                    <select name="to-from" class="select-group" id="toUnit">
                         <option value="Celsius">Celsius</option>
-                        <option value="Kelvin">Kelvin</option>
+                        <option selected value="Kelvin">Kelvin</option>
                         <option value="Fahrenheit">Fahrenheit</option>
                         <option value="Rankine">Rankine</option>
                     </select>
@@ -70,9 +70,9 @@
             </div>
         </div> 
         
-        <div class="author-intro">
+       <!--  <div class="author-intro">
             <p>Develop By <i><a href="https://www.linkedin.com/in/kamrul-hasan100" target="_blank">Kamrul Hasan</a></i> & Powered By <i><a href="https://www.insidethediv.com/" target="_blank">InsideTheDiv</a></i></p>
-        </div>    
+        </div>   -->  
     </div>
     <!-- javascript -->
     <script src="data/formula.js"></script>
